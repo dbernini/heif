@@ -132,6 +132,10 @@ public:
     virtual void getItemDataWithDecoderParameters(std::uint32_t contextId, std::uint32_t itemId,
         DataVector& itemDataWithDecoderParameters);
 
+    /// @see ImageFileReaderInterface::getItemDataWithDecoderParameters()
+    virtual void getItemDataWithDecoderParameters(std::uint32_t contextId, std::uint32_t itemId,
+        std::uint32_t decoderItemId, DataVector& itemDataWithDecoderParameters);
+
     /// @see ImageFileReaderInterface::getItemProtectionData()
     virtual DataVector getItemProtectionScheme(std::uint32_t contextId, std::uint32_t itemId) const;
 

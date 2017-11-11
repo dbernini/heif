@@ -725,9 +725,14 @@ ImageFileReaderInterface::PropertyTypeVector HevcImageFileReader::getItemPropert
     return mMetaBoxInfo.at(contextId).properties.at(itemId);
 }
 
-
 void HevcImageFileReader::getItemDataWithDecoderParameters(const uint32_t contextId, const uint32_t itemId,
     DataVector& itemDataWithDecoderParameters)
+{
+    return this->getItemDataWithDecoderParameters(contextId, itemId, itemId, itemDataWithDecoderParameters);
+}
+
+void HevcImageFileReader::getItemDataWithDecoderParameters(const uint32_t contextId, const uint32_t itemId,
+     const uint32_t decoderItemId, DataVector& itemDataWithDecoderParameters)
 {
     isInitialized();
 
@@ -741,7 +746,7 @@ void HevcImageFileReader::getItemDataWithDecoderParameters(const uint32_t contex
     ImageFileReaderInterface::ParameterSetMap parameterSet;
 
     std::string codeType = getDecoderCodeType(contextId, itemId);
-    getDecoderParameterSets(contextId, itemId, parameterSet);
+    getDecoderParameterSets(contextId, decoderItemId, parameterSet);
 
     if ((codeType == "hvc1") || (codeType == "lhv1"))
     {
